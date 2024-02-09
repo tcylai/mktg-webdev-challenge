@@ -1,0 +1,25 @@
+.headingContainer {
+    margin-top: 146px;
+    margin-bottom: 34px;
+    text-align: center;
+}
+
+.heading {
+    font-size: 56px;
+    line-height: 64px;
+    font-weight: 300;
+    margin-bottom: 24px;
+}
+
+.subHeading {
+    font-size: 16px;
+    line-height: 28px;
+}
+
+.contentContainer {
+    display: flex;
+}
+
+.directoryPage {
+    padding-bottom: 105px;
+}
