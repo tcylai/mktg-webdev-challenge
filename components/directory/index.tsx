@@ -1,7 +1,7 @@
 // The main component encapsulating everything to do with the Directory
 // on the people page
 
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react'
 import { PersonRecord, DepartmentRecord } from 'types'
 import DirectoryCardList from './DirectoryCardList'
 import FilterList from './FilterList'
@@ -45,7 +45,7 @@ export default function Directory({
 		while (queue.length) {
 			const department = queue.pop()
 
-			department.children.forEach((c, ix) => {
+			department.children.forEach((c: DepartmentRecord, ix: number) => {
 				const info = allDepartments.find((allDeps) => c.id === allDeps.id)
 				department.children[ix] = { ...info }
 				queue.push(department.children[ix])
@@ -64,17 +64,17 @@ export default function Directory({
 		})
 	}, [])
 
-	const handleNameSearch = useCallback((e) => {
-		setSearchName(e.target.value.trim())
+    const handleNameSearch = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+        setSearchName(e.target.value.trim())
 	}, [])
 
 	const handleHideClick = useCallback(() => {
-		setIsHideNoAvatar((prev) => !prev)
+		setIsHideNoAvatar((prev: boolean) => !prev)
 	}, [])
 
 	const filteredPeople = useMemo(
 		() =>
-			allPeople.filter((p) => {
+			allPeople.filter((p: PersonRecord) => {
 				const departmentFiltering =
 					!selectedFilter.length ||
 					p.department.id === selectedFilter[selectedFilter.length - 1]

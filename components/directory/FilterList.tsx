@@ -15,7 +15,7 @@ export default function FilterList({departments, handleFilterClick, selectedFilt
     return (
         <div className={style.container}>
             <p className={style.heading}>Filter By Department</p>
-            {departments.map(department => (
+            {departments.map((department: DepartmentRecord) => (
                 <DirectoryFilter key={department.id} department={department} handleFilterClick={handleFilterClick} selectedFilter={selectedFilter} />
             ))}
         </div>

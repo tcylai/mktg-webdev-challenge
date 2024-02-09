@@ -27,7 +27,7 @@ export default function Filter({department, handleFilterClick, parentIds = [], s
                 <div className={classnames(style.chevron, isExpanded && style.expanded, !department.children.length && style.noChevron )} onClick={handleOnclick}>›</div>
                 <div className={classnames(style.name, isSelected && style.selectedName)} onClick={boundHandleFilterClick}>{department.name}</div>
             </div>
-            {department.children.map(dep => (
+            {department.children.map((dep: DepartmentRecord) => (
                 <li key={dep.id} className={!isExpanded && style.none}>
                     <Filter department={dep} handleFilterClick={handleFilterClick} parentIds={[...parentIds, department.id]} selectedFilter={selectedFilter} />
                 </li>
